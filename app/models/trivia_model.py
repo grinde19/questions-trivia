@@ -1,5 +1,5 @@
 from app.database import db
-from app.models.association import trivia_question
+from app.models.trivia_question_inter import trivia_question
 
 class Trivia(db.Model):
     __tablename__ = 'trivias'
