@@ -1,14 +1,11 @@
 from flask import Blueprint
-from app.controllers.trivia_controller import (
-    get_all_trivias, get_trivia, create_trivia,
-    update_trivia, delete_trivia
-)
+from app.controllers import *
 
-bp = Blueprint('trivia', __name__, url_prefix='/api/trivias')
+bp = Blueprint('trivia', __name__)
 
 # Rutas generales
-bp.route('/', methods=['GET'])(get_all_trivias)
-bp.route('/<int:id>', methods=['GET'])(get_trivia)
-bp.route('/', methods=['POST'])(create_trivia)
-bp.route('/<int:id>', methods=['PUT'])(update_trivia)
-bp.route('/<int:id>', methods=['DELETE'])(delete_trivia)
+bp.route('/api/trivias/', methods=['GET'])(get_all_trivias)
+bp.route('/api/trivias/', methods=['POST'])(create_trivia)
+bp.route('/api/trivias/<int:id>', methods=['GET'])(get_trivia)
+bp.route('/api/trivias/<int:id>', methods=['PUT'])(update_trivia)
+bp.route('/api/trivias/<int:id>', methods=['DELETE'])(delete_trivia)

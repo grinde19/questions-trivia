@@ -1,9 +1,6 @@
 from flask import request
 from app.services.question_service import QuestionService
-from app.schemas.question_schema import QuestionSchema
-
-question_schema = QuestionSchema()
-questions_schema = QuestionSchema(many=True)
+from app.schemas.question_schema import question_schema, questions_schema
 
 def get_questions():
     return questions_schema.jsonify(QuestionService.get_all())
@@ -34,3 +31,6 @@ def delete_question(id):
 
 def get_questions_by_level(level_id):
     return questions_schema.jsonify(QuestionService.get_by_level(level_id))
+
+def get_questions_by_trivia(trivias_id):
+    return questions_schema.jsonify(QuestionService.get_by_trivia(level_id))

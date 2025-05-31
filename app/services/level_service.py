@@ -22,8 +22,8 @@ class LevelService:
         level = Level.query.get(id)
         if not level:
             return None
-        level.nombre = data.get('nombre', level.nombre)
-        level.puntaje = data.get('puntaje', level.puntaje)
+        level.text = data.get('text', level.text)
+        level.poiny = data.get('poiny', level.point)
         db.session.commit()
         return level
 

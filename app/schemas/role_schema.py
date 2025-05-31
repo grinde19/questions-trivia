@@ -5,6 +5,7 @@ class RoleSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Role
         load_instance = True
+        exclude = ['users']
 
 role_schema = RoleSchema()
 roles_schema = RoleSchema(many=True)

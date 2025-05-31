@@ -1,9 +1,7 @@
 from flask import request
 from app.services.level_service import LevelService
-from app.schemas.level_schema import LevelSchema
+from app.schemas.level_schema import level_schema, levels_schema
 
-level_schema = LevelSchema()
-levels_schema = LevelSchema(many=True)
 
 def get_levels():
     levels = LevelService.get_all()

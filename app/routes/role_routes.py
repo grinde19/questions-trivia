@@ -1,7 +1,11 @@
 from flask import Blueprint
-from app.controllers import role_controller
+from app.controllers import *
 
-bp = Blueprint('role', __name__, url_prefix='/api/roles')
+bp = Blueprint('role', __name__)
 
-bp.route('/', methods=['GET'])(role_controller.list_roles)
-bp.route('/', methods=['POST'])(role_controller.create_role)
+# Rutas generales
+bp.route('/api/roles/', methods=['GET'])(get_all_roles)
+bp.route('/api/roles/', methods=['POST'])(create_role)
+bp.route('/api/roles/<int:id>', methods=['GET'])(get_role)
+bp.route('/api/roles/<int:id>', methods=['PUT'])(update_role)
+bp.route('/api/roles/<int:id>', methods=['DELETE'])(delete_role)

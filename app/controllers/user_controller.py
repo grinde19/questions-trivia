@@ -3,41 +3,41 @@ from app.services.user_service import UserService
 from app.schemas.user_schema import user_schema, users_schema
 
 def list_users():
-    users = UserService.get_all_users()
+    users = UserService.get_all()
     return users_schema.jsonify(users)
 
 def get_user(id):
-    user = UserService.get_user_by_id(id)
+    user = UserService.get_by_id(id)
     if not user:
         abort(404, 'Usuario no encontrado')
     return user_schema.jsonify(user)
 
 def create_user():
     data = request.get_json()
-    name = data.get('name')
+    name = data.get('username')
     email = data.get('email')
-    user = UserService.create_user(name, email)
+    password =  data.get('password')
+    user = UserService.create(name, email, password)
     return user_schema.jsonify(user), 201
 
 def update_user(id):
-    user = UserService.get_user_by_id(id)
+    user = UserService.get_by_id(id)
     if not user:
         abort(404, 'Usuario no encontrado')
     data = request.get_json()
-    name = data.get('name')
+    name = data.get('username')
     email = data.get('email')
-    user = UserService.update_user(user, name, email)
+    user = UserService.update(user, name, email)
     return user_schema.jsonify(user)
 
 def delete_user(id):
-    user = UserService.get_user_by_id(id)
-    if not user:
-        abort(404, 'Usuario no encontrado')
-    UserService.delete_user(user)
-    return '', 204
+    deleted = UserService.delete(id)
+    if not deleted:
+        return {"message": "Usuario no encontrado"}, 404
+    return {"message": "Usuario eliminado"}
 
 def assign_roles(id):
-    user = UserService.get_user_by_id(id)
+    user = UserService.get_by_id(id)
     if not user:
         abort(404, 'Usuario no encontrado')
     data = request.get_json()

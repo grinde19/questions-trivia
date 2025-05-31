@@ -12,7 +12,7 @@ class QuestionService:
 
     @staticmethod
     def create(level_id, data):
-        question = Question(question_text=data['question_text'], level_id=level_id)
+        question = Question(question_text=data['text'], level_id=level_id)
         db.session.add(question)
         db.session.commit()
         return question
@@ -22,7 +22,8 @@ class QuestionService:
         question = Question.query.get(id)
         if not question:
             return None
-        question.question_text = data.get('question_text', question.question_text)
+        ### TO DO update LEVEL ALSO    
+        question.text = data.get('text', question.text)
         db.session.commit()
         return question
 
@@ -38,3 +39,7 @@ class QuestionService:
     @staticmethod
     def get_by_level(level_id):
         return Question.query.filter_by(level_id=level_id).all()
+
+    @staticmethod
+    def get_by_trivia(trivia_id):
+        return Question.query.filter_by(trivia_id=trivia_id).all()

@@ -4,31 +4,32 @@ from app.models.role import Role
 
 class UserService:
     @staticmethod
-    def get_all_users():
+    def get_all():
         return User.query.all()
 
     @staticmethod
-    def get_user_by_id(user_id):
+    def get_by_id(user_id):
         return User.query.get(user_id)
 
     @staticmethod
-    def create_user(name, email):
-        user = User(name=name, email=email)
+    def create(name, email, password):
+        # TO DO SAVE THE PASSWORD HASHEADO! FIX THIS
+        user = User(username=name, email=email, password_hash = password)
         db.session.add(user)
         db.session.commit()
         return user
 
     @staticmethod
-    def update_user(user, name=None, email=None):
+    def update(user, name=None, email=None):
         if name:
-            user.name = name
+            user.username = name
         if email:
             user.email = email
         db.session.commit()
         return user
 
     @staticmethod
-    def delete_user(user):
+    def delete(user):
         db.session.delete(user)
         db.session.commit()
 
@@ -37,6 +38,6 @@ class UserService:
         roles = Role.query.filter(Role.id.in_(role_ids)).all()
         if len(roles) != len(role_ids):
             raise ValueError("Uno o más roles no existen")
-        user.roles = roles  # se asignan (reemplazan) los roles actuales
+        user.roles = roles  # se reemplazan los roles actuales
         db.session.commit()
         return user

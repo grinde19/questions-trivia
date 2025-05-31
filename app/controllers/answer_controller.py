@@ -1,9 +1,6 @@
 from flask import request
 from app.services.answer_service import AnswerService
-from app.schemas.answer_schema import AnswerSchema
-
-answer_schema = AnswerSchema()
-answers_schema = AnswerSchema(many=True)
+from app.schemas.answer_schema import answer_schema, answers_schema
 
 def get_answers():
     return answers_schema.jsonify(AnswerService.get_all())

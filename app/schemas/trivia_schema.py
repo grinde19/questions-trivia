@@ -1,12 +1,14 @@
 from app.database import ma
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from app.models.trivia import Trivia
 from app.schemas.question_schema import QuestionSchema
 
-class TriviaSchema(SQLAlchemyAutoSchema):
+class TriviaSchema(ma.SQLAlchemyAutoSchema):
     questions = ma.Nested(QuestionSchema, many=True)
-
+    
     class Meta:
         model = Trivia
         load_instance = True
-        include_relationships = True
+        exclude = ['users']
+
+trivia_schema = TriviaSchema()
+trivias_schema = TriviaSchema(many=True)
