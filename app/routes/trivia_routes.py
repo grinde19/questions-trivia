@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers import *
+from app.controllers.trivia_controller import *
 
 bp = Blueprint('trivia', __name__)
 

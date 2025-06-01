@@ -1,5 +1,5 @@
 from app.database import ma
-from app.models.trivia import Trivia
+from app.models.trivia_model import Trivia
 from app.schemas.question_schema import QuestionSchema
 
 class TriviaSchema(ma.SQLAlchemyAutoSchema):

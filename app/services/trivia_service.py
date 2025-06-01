@@ -1,6 +1,6 @@
 from app.database import db
-from app.models.trivia import Trivia
-from app.models.question import Question
+from app.models.trivia_model import Trivia
+from app.models.question_model import Question
 
 class TriviaService:
 

@@ -1,5 +1,5 @@
 from app.database import ma
-from app.models.role import Role
+from app.models.role_model import Role
 
 class RoleSchema(ma.SQLAlchemyAutoSchema):
     class Meta:

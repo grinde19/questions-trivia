@@ -1,5 +1,4 @@
 from app.database import db
-from app.models.trivia_question_inter import trivia_question
 from app.models.user_trivia_inter import user_trivia
 
 class Trivia(db.Model):

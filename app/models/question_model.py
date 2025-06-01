@@ -1,5 +1,4 @@
 from app.database import db
-from app.models.trivia_question_inter import trivia_question
 
 class Question(db.Model):
     __tablename__ = 'questions'
@@ -8,8 +7,8 @@ class Question(db.Model):
     text = db.Column(db.String(255), nullable=False)
 
     # Foreign Keys
-    trivia_id = db.Column(db.Integer, db.ForeignKey('trivia.id'), nullable=False)
-    level_id = db.Column(db.Integer, db.ForeignKey('level.id'), nullable=False)
+    trivia_id = db.Column(db.Integer, db.ForeignKey('trivias.id'), nullable=False)
+    level_id = db.Column(db.Integer, db.ForeignKey('levels.id'), nullable=False)
     
     # Relaciones
     trivia = db.relationship('Trivia', back_populates='questions')

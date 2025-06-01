@@ -1,3 +1,6 @@
+from app.database import ma
+from app.models.trivia_model import Trivia
+
 class TriviaSummarySchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Trivia

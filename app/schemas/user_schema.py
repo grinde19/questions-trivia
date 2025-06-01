@@ -1,5 +1,5 @@
 from app.database import ma
-from app.models.user import User
+from app.models.user_model import User
 from app.schemas.role_schema import RoleSchema
 from app.schemas.trivia_summary_schema import TriviaSummarySchema
 

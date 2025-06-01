@@ -1,6 +1,6 @@
 from app.database import db
-from app.models.user import User
-from app.models.role import Role
+from app.models.user_model import User
+from app.models.role_model import Role
 
 class UserService:
     @staticmethod

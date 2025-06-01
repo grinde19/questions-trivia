@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers import *
+from app.controllers.role_controller import *
 
 bp = Blueprint('role', __name__)
 

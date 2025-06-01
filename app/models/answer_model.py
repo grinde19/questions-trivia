@@ -8,7 +8,7 @@ class Answer(db.Model):
     is_correct = db.Column(db.Boolean, default=False)  # TO DO<-- VALIDAR SEA UN TRUE POR TABLE
 
     # Foreign Key
-    question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
     
     # Relaciones
     question = db.relationship('Question', back_populates='answers')
