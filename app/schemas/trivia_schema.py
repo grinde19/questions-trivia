@@ -9,6 +9,5 @@ class TriviaSchema(ma.SQLAlchemyAutoSchema):
         model = Trivia
         load_instance = True
         exclude = ['users']
-
 trivia_schema = TriviaSchema()
 trivias_schema = TriviaSchema(many=True)

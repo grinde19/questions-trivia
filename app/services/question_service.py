@@ -11,8 +11,8 @@ class QuestionService:
         return Question.query.get(id)
 
     @staticmethod
-    def create(level_id, data):
-        question = Question(question_text=data['text'], level_id=level_id)
+    def create(data):
+        question = Question(text=data['text'], level_id=data['level_id'], trivia_id = data['trivia_id'] )
         db.session.add(question)
         db.session.commit()
         return question
@@ -21,8 +21,7 @@ class QuestionService:
     def update(id, data):
         question = Question.query.get(id)
         if not question:
-            return None
-        ### TO DO update LEVEL ALSO    
+            return None 
         question.text = data.get('text', question.text)
         db.session.commit()
         return question

@@ -23,7 +23,7 @@ class LevelService:
         if not level:
             return None
         level.text = data.get('text', level.text)
-        level.poiny = data.get('poiny', level.point)
+        level.poiny = data.get('point', level.point)
         db.session.commit()
         return level
 

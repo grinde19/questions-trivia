@@ -12,7 +12,6 @@ class AnswerService:
 
     @staticmethod
     def create(question_id, data):
-        ## TO DO validar si el is_correct esta en boolean
         answer = Answer(text=data['text'], question_id=question_id, is_correct=data['is_correct'])
         db.session.add(answer)
         db.session.commit()
@@ -23,8 +22,8 @@ class AnswerService:
         answer = Answer.query.get(id)
         if not answer:
             return None
-        ## TO DO debo actualizar el is_correct, por defecto es false    
         answer.text = data.get('text', answer.text)
+        answer.is_correct = data.get('is_correct', answer.is_correct)
         db.session.commit()
         return answer
 

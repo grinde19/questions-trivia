@@ -11,9 +11,9 @@ def get_question(id):
         return {"message": "Pregunta no encontrada"}, 404
     return question_schema.jsonify(question)
 
-def create_question(level_id):
+def create_question():
     data = request.get_json()
-    question = QuestionService.create(level_id, data)
+    question = QuestionService.create(data)
     return question_schema.jsonify(question), 201
 
 def update_question(id):
@@ -32,5 +32,5 @@ def delete_question(id):
 def get_questions_by_level(level_id):
     return questions_schema.jsonify(QuestionService.get_by_level(level_id))
 
-def get_questions_by_trivia(trivias_id):
-    return questions_schema.jsonify(QuestionService.get_by_trivia(level_id))
+def get_questions_by_trivia(trivia_id):
+    return questions_schema.jsonify(QuestionService.get_by_trivia(trivia_id))

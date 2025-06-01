@@ -38,3 +38,25 @@ def delete_trivia(id):
     if not deleted:
         return {"message": "Trivia no encontrada"}, 404
     return {"message": "Trivia eliminada"}
+
+def add_users_trivia(trivia_id):
+    trivia = TriviaService.get_by_id(trivia_id)
+    if not trivia:
+        abort(404, 'Trivia no encontrada')
+    data = request.get_json()
+    user_ids = data.get('user_ids', [])
+    try:
+        trivia = TriviaService.add_users(trivia, user_ids)
+    except ValueError as e:
+        abort(400, str(e))
+    return trivia_schema.jsonify(trivia), 200
+
+def get_users_trivia(trivia_id):
+    trivia = TriviaService.get_by_id(trivia_id)
+    if not trivia:
+        abort(404, 'Trivia no encontrada')
+    try:
+        trivia = TriviaService.get_users(trivia)
+    except ValueError as e:
+        abort(400, str(e))
+    return trivia_schema.jsonify(trivia), 200

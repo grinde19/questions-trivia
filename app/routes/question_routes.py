@@ -13,4 +13,4 @@ bp.route("/api/questions/<int:id>/", methods=["DELETE"])(delete_question)
 
 #Rutas para los los niveles y Trivias de las questions
 bp.route("/api/levels/<int:level_id>/questions/", methods=["GET"])(get_questions_by_level)
-bp.route("/api/trivia/<int:trivia_id>/questions/", methods=["GET"])(get_questions_by_trivia)
+bp.route("/api/trivias/<int:trivia_id>/questions/", methods=["GET"])(get_questions_by_trivia)

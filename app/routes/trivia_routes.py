@@ -9,3 +9,6 @@ bp.route('/api/trivias/', methods=['POST'])(create_trivia)
 bp.route('/api/trivias/<int:id>', methods=['GET'])(get_trivia)
 bp.route('/api/trivias/<int:id>', methods=['PUT'])(update_trivia)
 bp.route('/api/trivias/<int:id>', methods=['DELETE'])(delete_trivia)
+
+bp.route('/api/trivias/<int:trivia_id>/users', methods=['GET'])(get_users_trivia)
+bp.route('/api/trivias/<int:trivia_id>/users', methods=['POST'])(add_users_trivia)
